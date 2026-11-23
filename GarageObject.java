@@ -26,7 +26,7 @@ public class GarageObject {
 
         if (vehicleType == 3) {
             obj.setAllowed(false);
-            obj.setAuthorizationString("Error! No trucks allowed!");
+            obj.setAuthorizationString("Input Error! No trucks allowed!");
         }
         if (this.availableSpaces - 1 <= 0 )  { 
             obj.setAllowed(false);

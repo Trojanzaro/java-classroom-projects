@@ -12,9 +12,8 @@ public class GarageObject {
         this.cars = new ArrayList<CarObject>(availableSpaces);
     }
 
-
     public int getAvailableSpaces() {
-        return availableSpaces;
+        return this.availableSpaces - this.cars.size();
     }
 
     public void updateAvailableSpaces() {
@@ -23,14 +22,17 @@ public class GarageObject {
 
     public void addCar(int vehicleType, double vehicleHeight, double parkingHours, int customerAge, int arrivalHour) {
         CarObject obj = new CarObject(vehicleType, vehicleHeight, parkingHours, customerAge, arrivalHour);
+        
+        if (this.availableSpaces -1 <= 0 )  { 
+            obj.setAllowed(false);
+            obj.setAuthorizationString("Inupt Error! No more available spaces!"); 
+            return;
+        }
+
 
         if (vehicleType == 3) {
             obj.setAllowed(false);
             obj.setAuthorizationString("Input Error! No trucks allowed!");
-        }
-        if (this.availableSpaces - 1 <= 0 )  { 
-            obj.setAllowed(false);
-            obj.setAuthorizationString("Inupt Error! No more available spaces!"); 
         }
 
         if (vehicleHeight > 2.10) {
@@ -38,8 +40,9 @@ public class GarageObject {
             obj.setAuthorizationString("Inupt Error! Vehicle height: " +String.valueOf(vehicleHeight)+ ", only <= 2.10 meters allowed"); 
         }
 
-        // vehicle not allowed? print and skip fees and discounts
+        // vehicle not allowed? print and skip fees and discounts and DO NOT add to the Cars ArrayList
         if(!obj.getAllowed()) {
+            System.out.println("SKIPPING!");
             obj.printCar();
             return;
         }

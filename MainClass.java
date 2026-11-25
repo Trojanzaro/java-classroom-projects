@@ -11,12 +11,16 @@ class MainCLass {
         Garage1.addCar(2, 2.11, 7.6, 29, 12);
 
         // error no available spaces
-        Garage1.addCar(2, 2.11, 7.6, 29, 12);        
+        Garage1.addCar(1, 2.09, 3.0, 69, 21); //pad
+        Garage1.addCar(1, 2.09, 3.0, 69, 21); //pad
+        Garage1.addCar(1, 2.10, 7.6, 29, 12); //pad
+        
+        Garage1.addCar(2, 2.09, 3.0, 69, 21); // ERROR!
 
         Garage1.printGarageData();
         Garage1.getAvailableSpaces();
 
-        System.out.println("Garage size: " +Garage1.getCars().size()+ "\nAvailable spaces: " + Garage1.getAvailableSpaces());
+        System.out.println("Garage size: " +Garage1.getCars().size() + "\nAvailable spaces: " + Garage1.getAvailableSpaces());
 
     }
 }

@@ -23,10 +23,9 @@ public class GarageObject {
     public void addCar(int vehicleType, double vehicleHeight, double parkingHours, int customerAge, int arrivalHour) {
         CarObject obj = new CarObject(vehicleType, vehicleHeight, parkingHours, customerAge, arrivalHour);
         
-        if (this.availableSpaces -1 <= 0 )  { 
+        if (this.getAvailableSpaces() <= 0 )  { 
             obj.setAllowed(false);
-            obj.setAuthorizationString("Inupt Error! No more available spaces!"); 
-            return;
+            obj.setAuthorizationString("Inupt Error! No more available spaces!");
         }
 
 
@@ -78,7 +77,6 @@ public class GarageObject {
         
         // FInally add cat to ArrayList
         this.cars.add(obj);
-        this.updateAvailableSpaces();
     }
 
     public void printGarageData() {
